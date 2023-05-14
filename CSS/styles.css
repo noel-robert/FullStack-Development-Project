@@ -1,0 +1,49 @@
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 15px; /* 5px rounded corners */
+    width: 30%;
+    text-align: center;
+    margin: auto;
+    margin-top: 15%;
+    background-color: aliceblue;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+}
+
+.button {
+    background-color: #008CBA; /* Blue */
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    
+}
+
+.button:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+body {
+    background-image:url('../Static/login-bg.jpg');
+    /* height: auto;
+    width: auto; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
