@@ -61,7 +61,7 @@
 
 
 body {
-    background-image:url('mainpic.jpg');
+    background-image:url('../Static/mainpic.jpg'');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
