@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/main-style.css">
-    <link rel="script" href="../Javascript/option-select.js">
+    <script src="../Javascript/option-select.js"></script> 
     <title>Main Page</title>
 </head>
 
@@ -19,29 +19,30 @@
 
             <form action="" method="POST">
 
-                <table class="main-table" onchange="setList()">
+                <table class="main-table">
                     <tr>
-                        <td><label for="article-type" id="article-type"><strong>ARTICLE TYPE</strong> </label></td>
-                        <td><select for="article-type" style="width: 90%;">
-                                <option id="op1">Book</option>
-                                <option id="op1">Journal</option>
+                        <td><label for="article_type"><strong>ARTICLE TYPE</strong> </label></td>
+                        <td><select name="article_type" id="article_type" style="width: 90%;" onchange="setList()">
+                                <option value="-">-</option>
+                                <option value="article_book">Book</option>
+                                <option value="article_journal">Journal</option>
                         </td>
                     </tr>
                     <tr>
-                        <td> <label for="articlename" id="articlename"><strong>ARTICLE NAME</strong></label></td>
-                        <td><select for="articlename" style="width: 90%;">
-                                <option id="o1">Bookname1</option>
+                        <td> <label for="article_names"><strong>ARTICLE NAME</strong></label></td>
+                        <td><select name="article_names" id="article_names" style="width: 90%;">
+                                <!-- <option id="o1">Bookname1</option>
                                 <option id="o2">Bookname2</option>
                                 <option id="o3">Bookname3</option>
-                                <option id="04">Bookname4</option>
+                                <option id="04">Bookname4</option> -->
                             </select></td>
                     </tr>
                     <tr>
-                        <td><label for="article-date"><strong>ARTICLE DATE</strong></label></td>
-                        <td><input type="date" name="article-date" style="width: 90%"></td>
+                        <td><label for="article_date"><strong>ARTICLE DATE</strong></label></td>
+                        <td><input type="date" name="article_date" style="width: 90%"></td>
                     </tr>
                     <tr>
-                        <td><button type="submit" class="button" onClick="">Search</button></td>
+                        <td><button type="submit" class="button">Search</button></td>
                     </tr>
                 </table>
             </form>
