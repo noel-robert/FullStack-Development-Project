@@ -18,6 +18,7 @@ function updateListbox(category) {
     selectBox.add(newOption);
   });
 }
+
 function setList() {
   var type = document.getElementById("article-type");
   for (var i = 0; i < articlename.options.length; i++) {
