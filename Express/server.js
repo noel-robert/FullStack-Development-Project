@@ -21,9 +21,9 @@ app.post('/main_page', function(req, res) {
     
 })
 
-app.post('/', function(req, res) {})
+app.post('/signup', function(req, res) {})
 
-app.post('/', function(req, res) {})
+app.post('/login', function(req, res) {})
 
 
 
