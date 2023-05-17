@@ -1,0 +1,26 @@
+[
+    {
+        "journal_id":"J1001",
+        "journal_name":"Blockchain:Research and Applications",
+        "publicDate":"5/9/2022",
+        "author_id":"1007"
+    },
+    {
+        "journal_id":"J1002",
+        "journal_name":"Journal of Contextual Behavioral Science",
+        "publicDate":"12/4/2021",
+        "author_id":"1007"
+    },
+    {
+        "journal_id":"J1003",
+        "journal_name":"Artificial Intelligence in Geosciences",
+        "publicDate":"5/4/2023",
+        "author_id":"1008"
+    },
+    {
+        "journal_id":"J1004",
+        "journal_name":"Particuology",
+        "publicDate":"4/5/2021",
+        "author_id":"1008"
+    }
+]

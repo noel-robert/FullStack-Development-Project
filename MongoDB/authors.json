@@ -1,0 +1,34 @@
+[
+    {
+        "author_id":"1001",
+        "author_name":"Agatha Christie"
+    },
+    {
+        "author_id":"1002",
+        "author_name":"J. K. Rowling"
+    },
+    {
+        "author_id":"1003",
+        "author_name":"Robin Cook"
+    },
+    {
+        "author_id":"1004",
+        "author_name":"Chetan Bhagat"
+    },
+    {
+        "author_id":"1005",
+        "author_name":"Stephen King"
+    },
+    {
+        "author_id":"1006",
+        "author_name":"Rick Riordan"
+    },
+    {
+        "author_id":"1007",
+        "author_name":"Andrew Howel"
+    },
+    {
+        "author_id":"1008",
+        "author_name":"Peter Mora"
+    }
+]
