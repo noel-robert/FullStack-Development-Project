@@ -2,10 +2,9 @@ var express = require('express');
 var app = express()
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded( { extended: true } ));
-let alert = require('alert'); 
 
-var utility = require("../Public/utility.js");
-
+var utility = require("./Public/utility.js");
+const notifier = require('node-notifier');
 
 app.post('/main_page', function(req, res) {
     var article_type = req.body.article_type;
@@ -13,18 +12,29 @@ app.post('/main_page', function(req, res) {
     var article_date = req.body.article_date;
 
     if(article_type=="-" && article_names=="" && article_date=="") {
-        alert("All fields are empty, enter atleast one to proceed with querying")
-        // exit somehow
+        notifier.notify('All fields are empty, enter atleast one to proceed with querying');
     } 
 
     // establish connection with database
     utility.connectionEstablishment();
 
+    // querying
     let returnedData = utility.fetchData(article_type, article_names, article_date);
-    
+
 })
 
-app.post('/signup', function(req, res) {})
+app.post('/signup', function(req, res) {
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+    var passwordConfirm = req.body.passwordConfirm;
+
+    if (password === passwordConfirm) {
+        notifier.notify('Message');
+    }
+
+
+})
 
 app.post('/login', function(req, res) {})
 
