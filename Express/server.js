@@ -16,8 +16,11 @@ app.post('/main_page', function(req, res) {
         alert("All fields are empty, enter atleast one to proceed with querying")
         // exit somehow
     } 
-    //    console.log("All fields are empty, enter atleast one to proceed with querying");
 
+    // establish connection with database
+    utility.connectionEstablishment();
+
+    let returnedData = utility.fetchData(article_type, article_names, article_date);
     
 })
 
