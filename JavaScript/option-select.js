@@ -1,3 +1,5 @@
+// move to utility
+
 var journals = ["journal1", "journal2", "journal3"];
 var books = ["book1", "book2", "book3"];
 
