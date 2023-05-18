@@ -23,7 +23,7 @@ app.post('/main_page', function(req, res) {
 
     var result=utility.fetchData(article_type, article_names, article_date);
     (result)
-        .then((value) => res.send(utility.outputBeautify(value)))
+        .then((value) => console.log(value))
         .catch(console.error)
         .finally(() => utility.closeClient())
     // establish connection with database

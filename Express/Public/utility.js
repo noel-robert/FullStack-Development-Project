@@ -65,6 +65,7 @@ async function loginUser(username, password) {
 }
 
 async function fetchData(article_type, article_names, article_date) {
+    connectionEstablishment();
     const dbName = 'library';
     const db = client.db(dbName);
 
@@ -73,13 +74,13 @@ async function fetchData(article_type, article_names, article_date) {
         var query = ""; /*TODO*/
         if(article_names!='-'){
             //query={book_name:article_names}
-            query+="book_name:article_names,"
+            query+="book_name:"+article_names+","
         }
         else if(article_date!=''){
-            query+="publicDate:article_date"
+            query+="publicDate:"+article_date
             //query={public:article_names}
         }
-        const result = await article_book.find(query).toArray();
+        const result = await article_book.find({query}).toArray();
         return result;
     }
     else{
@@ -88,6 +89,8 @@ async function fetchData(article_type, article_names, article_date) {
         const result = await article_journal.find(query).toArray();
         return result;
     }
+    closeClient();
+
 }
 
 function hashPassword(plaintextPassword) {
