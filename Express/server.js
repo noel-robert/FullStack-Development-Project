@@ -21,11 +21,12 @@ app.post('/main_page', function(req, res) {
         notifier.notify('All fields are empty, enter atleast one to proceed with querying');
     } 
 
+        console.log(article_type, article_names, article_date);
     // establish connection with database
-    utility.connectionEstablishment();
+    // utility.connectionEstablishment();
 
     // querying
-    let returnedData = utility.fetchData(article_type, article_names, article_date);
+    // let returnedData = utility.fetchData(article_type, article_names, article_date);
 
 })
 

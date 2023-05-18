@@ -1,5 +1,14 @@
 var client;
 
+function compareDates(date1, date2) {
+    // format dd/mm/yyyy
+    // params: referenceDate, date
+    referenceDate = date1.split("-");
+    date = date2.split("-");
+
+
+}
+
 async function connectionEstablishment() {
     const { MongoClient, Collection } = require('mongodb');
 
@@ -53,4 +62,4 @@ function comparePassword(plaintextPassword, hash) {
     bcrypt.compareSync(plaintextPassword, hash);
 }
 
-module.exports = { connectionEstablishment, closeClient, fetchData, addUser }
+module.exports = { connectionEstablishment, closeClient, fetchData, addUser, compareDates }
