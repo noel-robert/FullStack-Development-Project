@@ -48,17 +48,46 @@ async function addUser (username, email, password) {
     closeClient();
 }
 
+async function loginUser(username, password) {
+    connectionEstablishment();
+
+    const dbName = 'library';
+    const db = client.db(dbName);
+    const userDetails = db.collection("UserInfo");
+
+    const result = await userDetails.find({ username: username }).toArray();
+    closeClient();
+    if (result[0].username == "") {  
+        return false;
+    } else {
+        return comparePassword(password, result[0].password);
+    }
+}
+
 async function fetchData(article_type, article_names, article_date) {
     const dbName = 'library';
     const db = client.db(dbName);
 
-    const article_book = db.collection("books");
-    const article_journal = db.collection("journals");
-
-    var query = {}; /*TODO*/
-
-    const result = await collection.find(query).toArray();
-    return result;
+    if(article_type=='article_book'){
+        const article_book = db.collection("books");
+        var query = ""; /*TODO*/
+        if(article_names!='-'){
+            //query={book_name:article_names}
+            query+="book_name:article_names,"
+        }
+        else if(article_date!=''){
+            query+="publicDate:article_date"
+            //query={public:article_names}
+        }
+        const result = await article_book.find(query).toArray();
+        return result;
+    }
+    else{
+        const article_journal = db.collection("journals");
+        var query = {}; /*TODO*/
+        const result = await article_journal.find(query).toArray();
+        return result;
+    }
 }
 
 function hashPassword(plaintextPassword) {
@@ -71,7 +100,7 @@ function hashPassword(plaintextPassword) {
 // compare password
 function comparePassword(plaintextPassword, hash) {
     const bcrypt = require("bcrypt")
-    bcrypt.compareSync(plaintextPassword, hash);
+    return bcrypt.compareSync(plaintextPassword, hash);
 }
 
-module.exports = { connectionEstablishment, closeClient, fetchData, addUser, compareDates }
+module.exports = { connectionEstablishment, closeClient, fetchData, addUser, compareDates, loginUser }

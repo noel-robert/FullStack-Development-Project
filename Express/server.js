@@ -21,7 +21,11 @@ app.post('/main_page', function(req, res) {
         notifier.notify('All fields are empty, enter atleast one to proceed with querying');
     } 
 
-        console.log(article_type, article_names, article_date);
+    var result=utility.fetchData(article_type, article_names, article_date);
+    (result)
+        .then((value) => res.send(utility.outputBeautify(value)))
+        .catch(console.error)
+        .finally(() => utility.closeClient())
     // establish connection with database
     // utility.connectionEstablishment();
 
@@ -30,9 +34,9 @@ app.post('/main_page', function(req, res) {
 
 })
 
-app.get('/signup', function(req, res) {
-    res.sendFile('D:\FullStack Development Project\HTML\login.html')
-})
+// app.get('/signup', function(req, res) {
+//     res.sendFile('D:\FullStack Development Project\HTML\login.html')
+// })
 
 app.post('/signup', function(req, res) {
     var username = req.body.username;
@@ -57,7 +61,13 @@ app.post('/signup', function(req, res) {
 app.post('/login', function(req, res) {
     var loginUsername = req.body.loginUsername;
     var loginPassword = req.body.loginPassword;
-    console.log(loginUsername);
+    
+    if (utility.loginUser(loginUsername, loginPassword)) {
+        res.sendFile("D:/FullStack Development Project/HTML/main_page.html");
+    } else {
+        notifier.notify("Invalid login credentials");
+    }
+
 })
 
 
