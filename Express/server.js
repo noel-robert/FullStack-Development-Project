@@ -3,6 +3,12 @@ var app = express()
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded( { extended: true } ));
 
+const path = require('path');
+//app.use(express.static(path.join(__dirname, '..', 'CSS')));
+//app.use(express.static('D:/FullStack Development Project/CSS'));
+app.use(express.static('CSS'));
+
+
 var utility = require("./Public/utility.js");
 const notifier = require('node-notifier');
 
@@ -23,20 +29,35 @@ app.post('/main_page', function(req, res) {
 
 })
 
+app.get('/signup', function(req, res) {
+    res.sendFile('D:\FullStack Development Project\HTML\login.html')
+})
+
 app.post('/signup', function(req, res) {
     var username = req.body.username;
     var email = req.body.email;
-    var password = req.body.password;
-    var passwordConfirm = req.body.passwordConfirm;
+    var password = req.body.loginPassword;
+    var passwordConfirm = req.body.reconfirmLoginPassword;
 
-    if (password === passwordConfirm) {
-        notifier.notify('Message');
+
+    if (password !== passwordConfirm) {
+        notifier.notify('Passwords do not match');
+        return;
     }
 
-
+    utility.addUser(username, email, password);
+    // res.redirect('http://localhost:8080/login.html');
+    // res.redirect('file:///D:/FullStack%20Development%20Project/HTML/login.html');
+    //res.redirect('/login');
+    console.log(path);
+    res.sendFile('D:/FullStack Development Project/HTML/login.html')
 })
 
-app.post('/login', function(req, res) {})
+app.post('/login', function(req, res) {
+    var loginUsername = req.body.loginUsername;
+    var loginPassword = req.body.loginPassword;
+    console.log(loginUsername);
+})
 
 
 

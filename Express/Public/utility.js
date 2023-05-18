@@ -14,6 +14,19 @@ function closeClient() {
     client.close();
 }
 
+async function addUser (username, email, password) {
+    connectionEstablishment();
+
+    const dbName = 'library';
+    const db = client.db(dbName);
+    const userDetails = db.collection("UserInfo");  // collection
+    
+    var user = { username: username, email: email, password: hashPassword(password) };
+    await userDetails.insertOne(user);
+
+    closeClient();
+}
+
 async function fetchData(article_type, article_names, article_date) {
     const dbName = 'library';
     const db = client.db(dbName);
@@ -27,4 +40,17 @@ async function fetchData(article_type, article_names, article_date) {
     return result;
 }
 
-module.exports = { connectionEstablishment, closeClient, fetchData }
+function hashPassword(plaintextPassword) {
+    const bcrypt = require("bcrypt")
+    var saltRounds = 10;
+    const hash = bcrypt.hashSync(plaintextPassword, saltRounds);
+    return hash;
+}
+    
+// compare password
+function comparePassword(plaintextPassword, hash) {
+    const bcrypt = require("bcrypt")
+    bcrypt.compareSync(plaintextPassword, hash);
+}
+
+module.exports = { connectionEstablishment, closeClient, fetchData, addUser }
