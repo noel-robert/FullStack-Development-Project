@@ -61,13 +61,14 @@ app.post('/signup', function(req, res) {
 app.post('/login', function(req, res) {
     var loginUsername = req.body.loginUsername;
     var loginPassword = req.body.loginPassword;
-    
-    if (utility.loginUser(loginUsername, loginPassword)) {
-        res.sendFile("D:/FullStack Development Project/HTML/main_page.html");
-    } else {
-        notifier.notify("Invalid login credentials");
-    }
-
+    const cred=utility.loginUser(loginUsername, loginPassword)
+    cred.then((value)=>{
+        if (value) {
+            res.sendFile("D:/FullStack Development Project/HTML/main_page.html");
+        } else {
+            notifier.notify("Invalid login credentials");
+        }
+    })
 })
 
 

@@ -56,8 +56,9 @@ async function loginUser(username, password) {
     const userDetails = db.collection("UserInfo");
 
     const result = await userDetails.find({ username: username }).toArray();
+    console.log(result)
     closeClient();
-    if (result[0].username == "") {  
+    if (result.length==0) {  
         return false;
     } else {
         return comparePassword(password, result[0].password);
@@ -71,10 +72,12 @@ async function fetchData(article_type, article_names, article_date) {
 
     if(article_type=='article_book'){
         const article_book = db.collection("books");
-        var query = ""; /*TODO*/
+        
+        var query; /*TODO*/
         if(article_names!='-'){
             //query={book_name:article_names}
             query+="book_name:"+article_names+","
+
         }
         else if(article_date!=''){
             query+="publicDate:"+article_date
