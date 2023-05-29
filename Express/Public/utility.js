@@ -80,13 +80,10 @@ async function fetchData(article_type, search_field, search_value) {
             query = { book_name: search_value }
             return await collection.find(query).toArray();
         }
-        else if (search_field == "article_date") {
-            /*TODO */
-        }
-        else {
-            /*TODO */
-        }
         
+        if (search_field == "article_date") {
+            /*TODO */
+        }        
     }
     else if (article_type == 'article_journal') {
         collection = db.collection("journals");
@@ -95,11 +92,9 @@ async function fetchData(article_type, search_field, search_value) {
             query = { journal_name: search_value }
             return await collection.find(query).toArray();
         }
-        else if (search_field == "article_date") {
+        
+        if (search_field == "article_date") {
             /*TODO */
-        }
-        else {
-           /*TODO */ 
         }
     }
     else {
