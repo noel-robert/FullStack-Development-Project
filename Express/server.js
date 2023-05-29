@@ -14,24 +14,21 @@ const notifier = require('node-notifier');
 
 app.post('/main_page', function(req, res) {
     var article_type = req.body.article_type;
-    var article_names = req.body.article_names;
-    var article_date = req.body.article_date;
+    var search_field = req.body.search_field;
+    var search_value = req.body.search_value;
 
-    if(article_type=="-" && article_names=="" && article_date=="") {
+    if(search_field=="-" && article_type=="-") {
         notifier.notify('All fields are empty, enter atleast one to proceed with querying');
     } 
 
-    var result=utility.fetchData(article_type, article_names, article_date);
+    var result=utility.fetchData(article_type, search_field, search_value);
     (result)
         .then((value) => console.log(value))
         .catch(console.error)
         .finally(() => utility.closeClient())
-    // establish connection with database
-    // utility.connectionEstablishment();
 
     // querying
     // let returnedData = utility.fetchData(article_type, article_names, article_date);
-
 })
 
 // app.get('/signup', function(req, res) {
@@ -53,7 +50,7 @@ app.post('/signup', function(req, res) {
     utility.addUser(username, email, password);
     // res.redirect('http://localhost:8080/login.html');
     // res.redirect('file:///D:/FullStack%20Development%20Project/HTML/login.html');
-    //res.redirect('/login');
+    // res.redirect('/login');
     console.log(path);
     res.sendFile('D:/FullStack Development Project/HTML/login.html')
 })

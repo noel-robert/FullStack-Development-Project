@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/main-style.css">
-    <!-- <script src="../Javascript/option-select.js"></script>  -->
     <title>Main Page</title>
 </head>
 
@@ -14,11 +13,10 @@
     <div class="card">
         <div class="container">
             <h1><b>ARTICLE SEARCH</b></h1>
-            <p>Note:Please ensure that the necessary columns are filled.</p>
+            <!-- <p>Note:Please ensure that the necessary columns are filled.</p> -->
 
 
             <form name="main_page" action="http://127.0.0.1:8080/main_page" method="POST">
-
                 <table class="main-table">
                     <tr>
                         <td><label for="article_type"><strong>ARTICLE TYPE</strong> </label></td>
@@ -29,12 +27,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> <label for="article_names"><strong>ARTICLE NAME</strong></label></td>
-                        <td><input type="text" name="article_names" id="article_names" style="width: 90%;"></td>
+                        <td><label for="search_field"><strong>SEARCH FIELD</strong> </label></td>
+                        <td><select name="search_field" id="search_field" style="width: 90%;">
+                                <option value="-">-</option>
+                                <option value="article_name">Name</option>
+                                <option value="article_date">Date</option>
+                        </td>
                     </tr>
                     <tr>
-                        <td><label for="article_date"><strong>ARTICLE DATE</strong></label></td>
-                        <td><input type="date" name="article_date" style="width: 90%"></td>
+                        <td><label for="search_value"><strong>SEARCH VALUE</strong></label></td>
+                        <td><input type="text" name="search_value" style="width: 90%"></td>
                     </tr>
                     <tr>
                         <td><button type="submit" class="button">Search</button></td>
