@@ -25,10 +25,6 @@ app.post('/main_page', function(req, res) {
     (result)
         .then((value) => console.log(value))
         .catch(console.error)
-        .finally(() => utility.closeClient())
-
-    // querying
-    // let returnedData = utility.fetchData(article_type, article_names, article_date);
 })
 
 // app.get('/signup', function(req, res) {

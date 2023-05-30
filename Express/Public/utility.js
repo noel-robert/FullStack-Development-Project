@@ -72,34 +72,36 @@ async function fetchData(article_type, search_field, search_value) {
     const db = client.db(dbName);
     var collection;
     var query;
+    var result = [];
 
-    if (article_type == 'article_book') {
+
+    if (article_type == "article_book") 
         collection = db.collection("books");
-
-        if (search_field == "article_name") {
-            query = { book_name: search_value }
-            return await collection.find(query).toArray();
-        }
-        
-        if (search_field == "article_date") {
-            /*TODO */
-        }        
-    }
-    else if (article_type == 'article_journal') {
+    else if (article_type == "article_journal") 
         collection = db.collection("journals");
-        
-        if (search_field == "article_name") {
+
+
+    if (search_field == "article_name") {
+        if (article_type == "article_book")
+            query = { book_name: search_value }
+
+        if (article_type == "article_journal")
             query = { journal_name: search_value }
-            return await collection.find(query).toArray();
-        }
-        
-        if (search_field == "article_date") {
-            /*TODO */
-        }
+
+        var tempRes = await collection.find(query).toArray();
+        result.push(tempRes)
     }
-    else {
-        // need to search both
+    else if (search_field == "article_date") {
+        var tempRes = await collection.find().toArray();
+
+        for (let i in tempRes) 
+            if (compareDates(search_value, tempRes[i].publicDate)) {
+                result.push(tempRes[i])
+            }
     }
+    
+    closeClient();
+    return result
 }
 
 function hashPassword(plaintextPassword) {
@@ -115,4 +117,4 @@ function comparePassword(plaintextPassword, hash) {
     return bcrypt.compareSync(plaintextPassword, hash);
 }
 
-module.exports = { fetchData, addUser, compareDates, loginUser, closeClient }
+module.exports = { fetchData, addUser, loginUser, closeClient }
