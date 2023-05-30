@@ -82,11 +82,12 @@ async function fetchData(article_type, search_field, search_value) {
 
 
     if (search_field == "article_name") {
-        if (article_type == "article_book")
-            query = { book_name: search_value }
+        // if (article_type == "article_book")
+        //     query = { name: search_value }
 
-        if (article_type == "article_journal")
-            query = { journal_name: search_value }
+        // if (article_type == "article_journal")
+        //     query = { name: search_value }
+        query = { name: search_value }
 
         var tempRes = await collection.find(query).toArray();
         result.push(tempRes)

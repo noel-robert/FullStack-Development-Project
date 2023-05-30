@@ -1,97 +1,97 @@
 [
     {
-        "book_id":"B1001",
-        "book_name":"A Pocket Full of Rye",
+        "id":"B1001",
+        "name":"A Pocket Full of Rye",
         "publicDate":"1953-09-11",
         "author_id":"1001" 
     },
     {
-        "book_id":"B1002",
-        "book_name":"A Murder Is Announced",
+        "id":"B1002",
+        "name":"A Murder Is Announced",
         "publicDate":"1950-06-01",
         "author_id":"1001" 
     },
     {
-        "book_id":"B1003",
-        "book_name":"Harry Potter and the Prisoner of Azkaban",
+        "id":"B1003",
+        "name":"Harry Potter and the Prisoner of Azkaban",
         "publicDate":"1999-07-08",
         "author_id":"1002" 
     },
     {
-        "book_id":"B1004",
-        "book_name":"The Casual Vacancy",
+        "id":"B1004",
+        "name":"The Casual Vacancy",
         "publicDate":"2012-09-27",
         "author_id":"1002" 
     },
     {
-        "book_id":"B1005",
-        "book_name":"Coma",
+        "id":"B1005",
+        "name":"Coma",
         "publicDate":"1973-07-06",
         "author_id":"1003" 
     },
     {
-        "book_id":"B1006",
-        "book_name":"Seizure",
+        "id":"B1006",
+        "name":"Seizure",
         "publicDate":"2003-08-03",
         "author_id":"1003" 
     },
     {
-        "book_id":"B1007",
-        "book_name":"Five Point Someone",
+        "id":"B1007",
+        "name":"Five Point Someone",
         "publicDate":"2004-05-01",
         "author_id":"1004" 
     },
     {
-        "book_id":"B1008",
-        "book_name":"One Night @ the Call Center",
+        "id":"B1008",
+        "name":"One Night @ the Call Center",
         "publicDate":"2005-10-05",
         "author_id":"1004" 
     },
     {
-        "book_id":"B1009",
-        "book_name":"The 3 Mistakes of My Life",
+        "id":"B1009",
+        "name":"The 3 Mistakes of My Life",
         "publicDate":"2008-01-01",
         "author_id":"1004" 
     },
     {
-        "book_id":"B1010",
-        "book_name":"The Green Mile",
+        "id":"B1010",
+        "name":"The Green Mile",
         "publicDate":"1996-03-12",
         "author_id":"1005" 
     },
     {
-        "book_id":"B1011",
-        "book_name":"The Shining",
+        "id":"B1011",
+        "name":"The Shining",
         "publicDate":"1977-01-27",
         "author_id":"1005" 
     },
     {
-        "book_id":"B1012",
-        "book_name":"Carrie",
+        "id":"B1012",
+        "name":"Carrie",
         "publicDate":"1974-04-05",
         "author_id":"1005" 
     },
     {
-        "book_id":"B1013",
-        "book_name":"It",
+        "id":"B1013",
+        "name":"It",
         "publicDate":"1986-09-15",
         "author_id":"1005" 
     },
     {
-        "book_id":"B1014",
-        "book_name":"The Lightning Thief",
+        "id":"B1014",
+        "name":"The Lightning Thief",
         "publicDate":"2005-07-01",
         "author_id":"1006" 
     },
     {
-        "book_id":"B1015",
-        "book_name":"The Son of Neptune",
+        "id":"B1015",
+        "name":"The Son of Neptune",
         "publicDate":"2011-10-04",
         "author_id":"1006" 
     },
     {
-        "book_id":"B1016",
-        "book_name":"The Sword of Summer",
+        "id":"B1016",
+        "name":"The Sword of Summer",
         "publicDate":"2015-10-06",
         "author_id":"1006" 
     }
