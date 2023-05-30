@@ -87,7 +87,7 @@ async function fetchData(article_type, search_field, search_value) {
 
         // if (article_type == "article_journal")
         //     query = { name: search_value }
-        query = { name: search_value }
+        query = { name: { $regex: new RegExp(search_value, "i") } }
 
         var tempRes = await collection.find(query).toArray();
         result.push(tempRes)
@@ -119,3 +119,4 @@ function comparePassword(plaintextPassword, hash) {
 }
 
 module.exports = { fetchData, addUser, loginUser, closeClient }
+// try fuzzy search - idea by steve
