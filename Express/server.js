@@ -18,7 +18,9 @@ app.post('/main_page', function(req, res) {
     var search_value = req.body.search_value;
 
     if(search_field=="-" && article_type=="-") {
+        // change this area to display report
         notifier.notify('All fields are empty, enter atleast one to proceed with querying');
+        return
     } 
 
     var result=utility.fetchData(article_type, search_field, search_value);
