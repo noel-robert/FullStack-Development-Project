@@ -16,7 +16,7 @@ Utility Functions: <br />
 2. closeClient() <br />
 &emsp;&emsp; Close connection to database <br />
 3. compareDates(date1, date2) <br />
-&emsp;&emsp; Returns True if date1 comes after date2 <br />
+&emsp;&emsp; Returns True if date2 comes on or after date1 <br />
 4. addUser (username, email, password) <br />
 &emsp;&emsp; Registers a new user to Database <br />
 5. loginUser(username, password) <br />
