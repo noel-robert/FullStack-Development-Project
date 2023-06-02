@@ -1,4 +1,4 @@
-// search_value textfield kept disabled untill needed
+// search_value textfield kept disabled until needed
 function changeAccess() {
     var article_type = document.getElementById("article_type");
     var search_field = document.getElementById("search_field");
