@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/main-style.css">
+    <script src="../JavaScript/javascriptFunctions.js"></script>
     <title>Main Page</title>
 </head>
 
@@ -20,7 +21,7 @@
                 <table class="main-table">
                     <tr>
                         <td><label for="article_type"><strong>ARTICLE TYPE</strong> </label></td>
-                        <td><select name="article_type" id="article_type" style="width: 90%;">
+                        <td><select name="article_type" id="article_type" style="width: 90%;" onChange="changeAccess()">
                                 <option value="-">-</option>
                                 <option value="article_book">Book</option>
                                 <option value="article_journal">Journal</option>
@@ -28,7 +29,7 @@
                     </tr>
                     <tr>
                         <td><label for="search_field"><strong>SEARCH FIELD</strong> </label></td>
-                        <td><select name="search_field" id="search_field" style="width: 90%;">
+                        <td><select name="search_field" id="search_field" style="width: 90%;" onChange="changeAccess()">
                                 <option value="-">-</option>
                                 <option value="article_name">Name</option>
                                 <option value="article_date">Date</option>
@@ -36,7 +37,7 @@
                     </tr>
                     <tr>
                         <td><label for="search_value"><strong>SEARCH VALUE</strong></label></td>
-                        <td><input type="text" name="search_value" style="width: 90%"></td>
+                        <td><input type="text" name="search_value" id="search_value" style="width: 90%" disabled></td>
                     </tr>
                     <tr>
                         <td><button type="submit" class="button">Search</button></td>
