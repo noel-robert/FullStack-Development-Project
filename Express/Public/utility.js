@@ -82,17 +82,11 @@ async function fetchData(article_type, search_field, search_value) {
 
 
     if (search_field == "article_name") {
-        // if (article_type == "article_book")
-        //     query = { name: search_value }
-
-        // if (article_type == "article_journal")
-        //     query = { name: search_value }
         query = { name: { $regex: new RegExp(search_value, "i") } }
 
         var tempRes = await collection.find(query).toArray();
         result.push(tempRes)
-    }
-    else if (search_field == "article_date") {
+    } else if (search_field == "article_date") {
         var tempRes = await collection.find().toArray();
 
         for (let i in tempRes) 
@@ -118,5 +112,31 @@ function comparePassword(plaintextPassword, hash) {
     return bcrypt.compareSync(plaintextPassword, hash);
 }
 
-module.exports = { fetchData, addUser, loginUser, closeClient }
+async function editData(id, article_type, name, publicDate, author_id) {
+    // id and article_type is necessary; author_id, publicDate and name can be edited
+    // if id not found, inserted as new record
+    connectionEstablishment();
+
+    const dbName = 'library';
+    const db = client.db(dbName);
+    var collection;
+
+    if (article_type == "article_book") 
+        collection = db.collection("books");
+    else if (article_type == "article_journal") 
+        collection = db.collection("journals");
+
+    var query = { id: id };
+    var update = { name: name, publicDate: publicDate, author_id: author_id };
+
+    db.collection.update(
+        { query },
+        { update },
+        { upsert: true }
+    )
+
+    closeClient();
+}
+
+module.exports = { fetchData, addUser, loginUser, closeClient, editData }
 // try fuzzy search - idea by steve
