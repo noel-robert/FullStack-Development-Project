@@ -3,22 +3,32 @@ var client;
 function compareDates(date1, date2) {
     // format yyyy-mm-dd
     // params: referenceDate, dbDate
-    // check if dbDate is greater than reference date
+    // check if dbDate is greater than or equal to reference date
     referenceDate = date1.split("-");   // from user
     dbDate = date2.split("-");          // from database
 
     // compare years, then months, then years
+    // if (parseInt(dbDate[0]) < parseInt(referenceDate[0])) return false;
+    // else if (parseInt(dbDate[0]) > parseInt(referenceDate[0])) return true;
+    // else {
+    //     if (parseInt(dbDate[1]) < parseInt(referenceDate[1])) return false;
+    //     else if (parseInt(dbDate[1]) > parseInt(referenceDate[1])) return true;
+    //     else {
+    //         if (parseInt(dbDate[2]) < parseInt(referenceDate[2])) return false;
+    //         else if (parseInt(dbDate[2]) > parseInt(referenceDate[2])) return true;
+    //         else return false;
+    //     }
+    // }
+
     if (parseInt(dbDate[0]) < parseInt(referenceDate[0])) return false;
-    else if (parseInt(dbDate[0]) > parseInt(referenceDate[0])) return true;
-    else {
-        if (parseInt(dbDate[1]) < parseInt(referenceDate[1])) return false;
-        else if (parseInt(dbDate[1]) > parseInt(referenceDate[1])) return true;
-        else {
-            if (parseInt(dbDate[2]) < parseInt(referenceDate[2])) return false;
-            else if (parseInt(dbDate[2]) > parseInt(referenceDate[2])) return true;
-            else return false;
-        }
-    }
+    if (parseInt(dbDate[0]) > parseInt(referenceDate[0])) return true;
+    
+    if (parseInt(dbDate[1]) < parseInt(referenceDate[1])) return false;
+    if (parseInt(dbDate[1]) > parseInt(referenceDate[1])) return true;
+    
+    if (parseInt(dbDate[2]) < parseInt(referenceDate[2])) return false;
+    if (parseInt(dbDate[2]) > parseInt(referenceDate[2])) return true;
+    return true;
 }
 
 async function connectionEstablishment() {
