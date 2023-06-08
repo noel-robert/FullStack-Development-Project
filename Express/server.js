@@ -6,7 +6,7 @@ app.use(bodyParser.urlencoded( { extended: true } ));
 const path = require('path');
 //app.use(express.static(path.join(__dirname, '..', 'CSS')));
 //app.use(express.static('D:/FullStack Development Project/CSS'));
-app.use(express.static('CSS'));
+app.use(express.static('Public'));
 
 
 var utility = require("./Public/utility.js");
@@ -23,9 +23,10 @@ app.post('/main_page', function(req, res) {
         return
     } 
 
-    var result=utility.fetchData(article_type, search_field, search_value);
+    var result = utility.fetchData(article_type, search_field, search_value);
     (result)
-        .then((value) => console.log(value))
+        // .then((value) => console.log(value))
+        .then((value) => res.send(utility.outputBeautify(value)))
         .catch(console.error)
 })
 

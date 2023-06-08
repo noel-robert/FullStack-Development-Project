@@ -148,5 +148,20 @@ async function editData(id, article_type, name, publicDate, author_id) {
     closeClient();
 }
 
-module.exports = { fetchData, addUser, loginUser, closeClient, editData }
+function outputBeautify (value) {
+    console.log(value)
+    let returnValue = "<html><head><title>_tempHeading_</title></head> <body><table cellspacing='10'>";
+    returnValue += "<tr><th>ID</th> <th>Name</th> <th>Publication Date</th> <th>Author ID</th></tr>"
+
+    // var i = 0
+    for (let i in value) {
+        returnValue += "<tr><td>" + value[i].id + "</td><td>" + value[i].name + "</td><td>" + value[i].publicDate + "</td><td>" + value[i].author_id + "</td></tr>"
+        // console.log(returnValue + "\n")
+    }
+    returnValue += "</table></body></html>"
+
+    return returnValue
+}
+
+module.exports = { fetchData, addUser, loginUser, closeClient, editData, outputBeautify }
 // try fuzzy search - idea by steve
