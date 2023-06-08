@@ -4,8 +4,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded( { extended: true } ));
 
 const path = require('path');
-//app.use(express.static(path.join(__dirname, '..', 'CSS')));
-//app.use(express.static('D:/FullStack Development Project/CSS'));
 app.use(express.static('Public'));
 
 
@@ -13,26 +11,38 @@ var utility = require("./Public/utility.js");
 const notifier = require('node-notifier');
 
 app.post('/main_page', function(req, res) {
+    const submitButton = req.body.submit;
     var article_type = req.body.article_type;
     var search_field = req.body.search_field;
     var search_value = req.body.search_value;
 
-    if(search_field=="-" && article_type=="-") {
-        // change this area to display report
-        notifier.notify('All fields are empty, enter atleast one to proceed with querying');
-        return
-    } 
+    // if(search_field=="-" && article_type=="-") {
+    //     // change this area to display report
+    //     notifier.notify('All fields are empty, enter at-least one to proceed with querying');
+    //     return
+    // } 
 
-    var result = utility.fetchData(article_type, search_field, search_value);
-    (result)
-        // .then((value) => console.log(value))
-        .then((value) => res.send(utility.outputBeautify(value)))
-        .catch(console.error)
+    // var result = utility.fetchData(article_type, search_field, search_value);
+    // (result)
+    //     // .then((value) => console.log(value))
+    //     .then((value) => res.send(utility.outputBeautify(value)))
+    //     .catch(console.error)
+
+    if (submitButton === "search") {
+        if(search_field=="-" && article_type=="-") {
+            // change this area to display report
+            notifier.notify('All fields are empty, enter at-least one to proceed with querying');
+            return
+        } 
+    
+        var result = utility.fetchData(article_type, search_field, search_value);
+        (result)
+            // .then((value) => console.log(value))
+            .then((value) => res.send(utility.outputBeautify(value)))
+            .catch(console.error)
+    } else if (submitButton === "editRequest") {}
 })
 
-// app.get('/signup', function(req, res) {
-//     res.sendFile('D:\FullStack Development Project\HTML\login.html')
-// })
 
 app.post('/signup', function(req, res) {
     var username = req.body.username;
@@ -53,6 +63,7 @@ app.post('/signup', function(req, res) {
     console.log(path);
     res.sendFile('D:/FullStack Development Project/HTML/login.html')
 })
+
 
 app.post('/login', function(req, res) {
     var loginUsername = req.body.loginUsername;
