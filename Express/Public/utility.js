@@ -95,7 +95,9 @@ async function fetchData(article_type, search_field, search_value) {
         query = { name: { $regex: new RegExp(search_value, "i") } }
 
         var tempRes = await collection.find(query).toArray();
-        result.push(tempRes)
+        for (let i in tempRes) {
+            result.push(tempRes[i])
+        }           
     } else if (search_field == "article_date") {
         var tempRes = await collection.find().toArray();
 
