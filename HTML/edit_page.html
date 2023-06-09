@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/main-style.css">
+    <script src="../JavaScript/javascriptFunctions.js"></script>
+    <title>Edit Page</title>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="container">
+            <h1><b>ARTICLE EDIT</b></h1>
+
+
+            <form name="edit_page" action="http://127.0.0.1:8080/edit_page" method="POST">
+                <table class="main-table">
+                    <tr>
+                        <td><label for="article_type"><strong>ARTICLE TYPE*</strong> </label></td>
+                        <td><select name="article_type" id="article_type" style="width: 90%;">
+                            <option value="-">-</option>
+                            <option value="article_book">Book</option>
+                            <option value="article_journal">Journal</option>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="article_id"><strong>ARTICLE ID*</strong> </label></td>
+                        <td><input type="text" name="article_id" id="article_id" style="width: 90%" onChange="changeAccessEditPage()"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="new_name"><strong>NEW NAME</strong> </label></td>
+                        <td><input type="text" name="new_name" id="new_name" style="width: 90%" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><label for="new_publicationDate"><strong>PUBLICATION DATE</strong> </label></td>
+                        <td><input type="text" name="new_publicationDate" id="new_publicationDate" style="width: 90%" disabled></td>
+                    </tr>
+                    <tr>
+                        <td><label for="author_id"><strong>AUTHOR ID</strong> </label></td>
+                        <td><input type="text" name="author_id" id="author_id" style="width: 90%" disabled></td>
+                    </tr>
+
+                    <tr>
+                        <td><button type="submit" class="button" name="edit" value="search">Edit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

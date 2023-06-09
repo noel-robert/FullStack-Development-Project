@@ -9,3 +9,17 @@ function changeAccess() {
     else
         document.getElementById("search_value").disabled = true;
 }
+
+function changeAccessEditPage() {
+    var article_id = document.getElementById("article_id");
+
+    if (article_id != "") {
+        document.getElementById("new_name").disabled = false;
+        document.getElementById("new_publicationDate").disabled = false;
+        document.getElementById("author_id").disabled = false;
+    } else {
+        document.getElementById("new_name").disabled = true;
+        document.getElementById("new_publicationDate").disabled = true;
+        document.getElementById("author_id").disabled = true;
+    }
+}

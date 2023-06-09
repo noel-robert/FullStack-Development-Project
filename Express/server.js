@@ -16,31 +16,32 @@ app.post('/main_page', function(req, res) {
     var search_field = req.body.search_field;
     var search_value = req.body.search_value;
 
-    // if(search_field=="-" && article_type=="-") {
-    //     // change this area to display report
-    //     notifier.notify('All fields are empty, enter at-least one to proceed with querying');
-    //     return
-    // } 
 
-    // var result = utility.fetchData(article_type, search_field, search_value);
-    // (result)
-    //     // .then((value) => console.log(value))
-    //     .then((value) => res.send(utility.outputBeautify(value)))
-    //     .catch(console.error)
+    if(search_field=="-" && article_type=="-") {
+        // change this area to display report
+        // notifier.notify('All fields are empty, enter at-least one to proceed with querying');
+        // return
+    } 
 
     if (submitButton === "search") {
-        if(search_field=="-" && article_type=="-") {
-            // change this area to display report
-            notifier.notify('All fields are empty, enter at-least one to proceed with querying');
-            return
-        } 
-    
         var result = utility.fetchData(article_type, search_field, search_value);
         (result)
-            // .then((value) => console.log(value))
             .then((value) => res.send(utility.outputBeautify(value)))
             .catch(console.error)
-    } else if (submitButton === "editRequest") {}
+    } else if (submitButton === "editRequest") {
+        res.sendFile("D:/FullStack Development Project/HTML/edit_page.html");
+    }
+})
+
+
+app.post('/edit_page', function(req, res) {
+    var article_type = req.body.article_type;
+    var article_id = req.body.article_id;
+    var new_name = req.body.new_name;
+    var new_publicationDate = req.body.new_publicationDate;
+    var author_id = req.body.author_id;
+
+    utility.editData(article_type, article_id, new_name, new_publicationDate, author_id);
 })
 
 
