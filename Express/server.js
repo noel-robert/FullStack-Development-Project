@@ -18,12 +18,11 @@ app.post('/main_page', function(req, res) {
 
 
     if(search_field=="-" && article_type=="-") {
-        // change this area to display report
-        // notifier.notify('All fields are empty, enter at-least one to proceed with querying');
-        // return
-    } 
-
-    if (submitButton === "search") {
+        var result = utility.generateReport();
+        (result)
+            .then((value) => res.send(utility.outputBeautify(value)))
+            .catch(console.error)
+    } else if (submitButton === "search") {
         var result = utility.fetchData(article_type, search_field, search_value);
         (result)
             .then((value) => res.send(utility.outputBeautify(value)))
@@ -69,7 +68,7 @@ app.post('/signup', function(req, res) {
 app.post('/login', function(req, res) {
     var loginUsername = req.body.loginUsername;
     var loginPassword = req.body.loginPassword;
-    const cred=utility.loginUser(loginUsername, loginPassword)
+    const cred = utility.loginUser(loginUsername, loginPassword)
     cred.then((value)=>{
         if (value) {
             res.sendFile("D:/FullStack Development Project/HTML/main_page.html");

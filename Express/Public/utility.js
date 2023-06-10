@@ -104,6 +104,30 @@ async function fetchData(article_type, search_field, search_value) {
 }
 
 
+async function generateReport() {
+    connectionEstablishment()
+
+    const dbName = 'library';
+    const db = client.db(dbName);
+    var collection;
+    var tempRes;
+    var result = [];
+
+    collection = db.collection("books");
+    tempRes = await collection.find().toArray();
+    for (let i in tempRes) 
+        result.push(tempRes[i])
+
+    collection = db.collection("journals");
+    tempRes = await collection.find().toArray();
+    for (let i in tempRes) 
+        result.push(tempRes[i])
+
+    closeClient();
+    return result
+}
+
+
 function hashPassword(plaintextPassword) {
     const bcrypt = require("bcrypt")
     var saltRounds = 10;
@@ -157,5 +181,5 @@ function outputBeautify (value) {
 
 
 
-module.exports = { fetchData, addUser, loginUser, closeClient, editData, outputBeautify }
+module.exports = { fetchData, addUser, generateReport, closeClient, editData, outputBeautify }
 // try fuzzy search
