@@ -114,12 +114,47 @@ async function generateReport() {
     var result = [];
 
     collection = db.collection("books");
-    tempRes = await collection.find().toArray();
+    // tempRes = await collection.find().toArray();
+    tempRes=await collection.aggregate([
+        {
+          $lookup: {
+            from: "authors",
+            localField: "author_id",
+            foreignField: "author_id",
+            as: "authors"
+          }
+          
+        },
+        {
+            $unwind: {
+              path: "$authors",
+              preserveNullAndEmptyArrays: true
+            }
+        }
+      ]).toArray();
+     console.log(tempRes) 
     for (let i in tempRes) 
         result.push(tempRes[i])
 
     collection = db.collection("journals");
-    tempRes = await collection.find().toArray();
+    // tempRes = await collection.find().toArray();
+    tempRes=await collection.aggregate([
+        {
+          $lookup: {
+            from: "authors",
+            localField: "author_id",
+            foreignField: "author_id",
+            as: "authors"
+          }
+          
+        },
+        {
+            $unwind: {
+              path: "$authors",
+              preserveNullAndEmptyArrays: true
+            }
+        }
+      ]).toArray();
     for (let i in tempRes) 
         result.push(tempRes[i])
 
@@ -168,11 +203,11 @@ async function editData(article_type, id, name, publicDate, author_id) {
 
 function outputBeautify (value) {
     let returnValue = "<html><head><title>Query Result</title></head> <body><table cellspacing='10'>";
-    returnValue += "<tr><th>ID</th> <th>Name</th> <th>Publication Date</th> <th>Author ID</th></tr>"
+    returnValue += "<tr><th>ID</th> <th>Name</th> <th>Publication Date</th> <th>Author ID</th><th>Author Name</th></tr>"
 
     // var i = 0
     for (let i in value) {
-        returnValue += "<tr><td>" + value[i].id + "</td><td>" + value[i].name + "</td><td>" + value[i].publicDate + "</td><td>" + value[i].author_id + "</td></tr>"
+        returnValue += "<tr><td>" + value[i].id + "</td><td>" + value[i].name + "</td><td>" + value[i].publicDate + "</td><td>" + value[i].author_id + "</td><td>" + value[i].authors.author_name +  "</td></tr>" 
     }
     returnValue += "</table></body></html>"
 

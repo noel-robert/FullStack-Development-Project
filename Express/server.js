@@ -11,7 +11,9 @@ var utility = require("./Public/utility.js");
 const notifier = require('node-notifier');
 
 app.get("/", function (req, res) {
-    res.sendFile('D:\\FullStack_Development_Project\\HTML\\login.html')
+    // res.sendFile('D:\\FullStack_Development_Project\\HTML\\login.html')
+    res.sendFile('C:\\Users\\manus\\OneDrive\\Desktop\\UST-Git\\FullStack-Development-Project\\HTML\\login.html')
+    
 })
 
 app.post('/main_page', function(req, res) {
@@ -33,7 +35,8 @@ app.post('/main_page', function(req, res) {
             .then((value) => res.send(utility.outputBeautify(value)))
             .catch(console.error)
     } else if (submitButton === "editRequest") {
-        res.sendFile("D:\\FullStack_Development_Project\\HTML\\edit_page.html");
+       // res.sendFile('D:\\FullStack_Development_Project\\HTML\\login.html')
+    res.sendFile('C:\\Users\\manus\\OneDrive\\Desktop\\UST-Git\\FullStack-Development-Project\\HTML\\login.html')
     }
 })
 
@@ -69,7 +72,8 @@ app.post('/signup', function(req, res) {
     // res.redirect('file:///D:/FullStack%20Development%20Project/HTML/login.html');
     // res.redirect('/login');
     // console.log(path);
-    res.sendFile('D:\\FullStack_Development_Project\\HTML\\login.html')
+    // res.sendFile('D:\\FullStack_Development_Project\\HTML\\login.html')
+    res.sendFile('C:\\Users\\manus\\OneDrive\\Desktop\\UST-Git\\FullStack-Development-Project\\HTML\\login.html')
 })
 
 
@@ -79,7 +83,8 @@ app.post('/login', function(req, res) {
     const cred = utility.loginUser(loginUsername, loginPassword)
     cred.then((value)=>{
         if (value) {
-            res.sendFile("D:\\FullStack_Development_Project\\HTML\\main_page.html");
+            // res.sendFile("D:\\FullStack_Development_Project\\HTML\\main_page.html");
+            res.sendFile("C:\\Users\\manus\\OneDrive\\Desktop\\UST-Git\\FullStack-Development-Project\\HTML\\main_page.html");
         } else {
             notifier.notify("Invalid login credentials");
         }
