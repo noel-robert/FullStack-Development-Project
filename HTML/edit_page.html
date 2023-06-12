@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/main-style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/main-style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/Express/public/main-style.css"> -->
     <script src="../JavaScript/javascriptFunctions.js"></script>
     <title>Edit Page</title>
 </head>
@@ -20,7 +21,7 @@
                 <table class="main-table">
                     <tr>
                         <td><label for="article_type"><strong>ARTICLE TYPE*</strong> </label></td>
-                        <td><select name="article_type" id="article_type" style="width: 90%;">
+                        <td><select name="article_type" id="article_type" style="width: 90%;" onChange="editPage_accessToggle()">
                             <option value="-">-</option>
                             <option value="article_book">Book</option>
                             <option value="article_journal">Journal</option>
@@ -28,7 +29,7 @@
                     </tr>
                     <tr>
                         <td><label for="article_id"><strong>ARTICLE ID*</strong> </label></td>
-                        <td><input type="text" name="article_id" id="article_id" style="width: 90%" onChange="changeAccessEditPage()"></td>
+                        <td><input type="text" name="article_id" id="article_id" style="width: 90%" onChange="editPage_accessToggle()"></td>
                     </tr>
                     <tr>
                         <td><label for="new_name"><strong>NEW NAME</strong> </label></td>

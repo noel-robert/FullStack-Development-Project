@@ -57,7 +57,7 @@ async function loginUser(username, password) {
     const userDetails = db.collection("UserInfo");
 
     const result = await userDetails.find({ username: username }).toArray();
-    console.log(result)
+    // console.log(result)
     closeClient();
     if (result.length==0) {  
         return false;
@@ -181,5 +181,5 @@ function outputBeautify (value) {
 
 
 
-module.exports = { fetchData, addUser, generateReport, closeClient, editData, outputBeautify }
+module.exports = { fetchData, addUser, loginUser, generateReport, editData, outputBeautify }
 // try fuzzy search

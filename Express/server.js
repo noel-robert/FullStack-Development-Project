@@ -4,20 +4,25 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded( { extended: true } ));
 
 const path = require('path');
-app.use(express.static('Public'));
+app.use(express.static('D:\\FullStack_Development_Project'));
 
 
 var utility = require("./Public/utility.js");
 const notifier = require('node-notifier');
 
+app.get("/", function (req, res) {
+    res.sendFile('D:\\FullStack_Development_Project\\HTML\\login.html')
+})
+
 app.post('/main_page', function(req, res) {
     const submitButton = req.body.submit;
+    // console.log(submitButton)
     var article_type = req.body.article_type;
     var search_field = req.body.search_field;
     var search_value = req.body.search_value;
 
 
-    if(search_field=="-" && article_type=="-") {
+    if(search_field=="-" && article_type=="-" && submitButton === "search") {
         var result = utility.generateReport();
         (result)
             .then((value) => res.send(utility.outputBeautify(value)))
@@ -28,7 +33,7 @@ app.post('/main_page', function(req, res) {
             .then((value) => res.send(utility.outputBeautify(value)))
             .catch(console.error)
     } else if (submitButton === "editRequest") {
-        res.sendFile("D:/FullStack Development Project/HTML/edit_page.html");
+        res.sendFile("D:\\FullStack_Development_Project\\HTML\\edit_page.html");
     }
 })
 
@@ -40,7 +45,10 @@ app.post('/edit_page', function(req, res) {
     var new_publicationDate = req.body.new_publicationDate;
     var author_id = req.body.author_id;
 
-    utility.editData(article_type, article_id, new_name, new_publicationDate, author_id);
+    if(article_type=="-" || article_id=="")
+        notifier.notify("Invalid login credentials");
+    else
+        utility.editData(article_type, article_id, new_name, new_publicationDate, author_id);
 })
 
 
@@ -60,8 +68,8 @@ app.post('/signup', function(req, res) {
     // res.redirect('http://localhost:8080/login.html');
     // res.redirect('file:///D:/FullStack%20Development%20Project/HTML/login.html');
     // res.redirect('/login');
-    console.log(path);
-    res.sendFile('D:/FullStack Development Project/HTML/login.html')
+    // console.log(path);
+    res.sendFile('D:\\FullStack_Development_Project\\HTML\\login.html')
 })
 
 
@@ -71,7 +79,7 @@ app.post('/login', function(req, res) {
     const cred = utility.loginUser(loginUsername, loginPassword)
     cred.then((value)=>{
         if (value) {
-            res.sendFile("D:/FullStack Development Project/HTML/main_page.html");
+            res.sendFile("D:\\FullStack_Development_Project\\HTML\\main_page.html");
         } else {
             notifier.notify("Invalid login credentials");
         }
@@ -83,7 +91,8 @@ app.post('/login', function(req, res) {
 var server = app.listen(8080, function() {
     var host = server.address().address;
     var port = server.address().port;
-    console.log("App listening at http://%s:%s", host, port);
+    // console.log("App listening at http://%s:%s", host, port);
+    console.log("App listening at http://localhost:%s", port);
 
     console.log("Server running at port %s", port);
 });
