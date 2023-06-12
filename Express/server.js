@@ -27,7 +27,7 @@ app.post('/main_page', function(req, res) {
     if(search_field=="-" && article_type=="-" && submitButton === "search") {
         var result = utility.generateReport();
         (result)
-            .then((value) => res.send(utility.outputBeautify(value)))
+            .then((value) => res.send(utility.reportBeautify(value)))
             .catch(console.error)
     } else if (submitButton === "search") {
         var result = utility.fetchData(article_type, search_field, search_value);
