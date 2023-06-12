@@ -203,6 +203,18 @@ async function editData(article_type, id, name, publicDate, author_id) {
 
 function outputBeautify (value) {
     let returnValue = "<html><head><title>Query Result</title></head> <body><table cellspacing='10'>";
+    returnValue += "<tr><th>ID</th> <th>Name</th> <th>Publication Date</th> <th>Author ID</th></tr>"
+
+    // var i = 0
+    for (let i in value) {
+        returnValue += "<tr><td>" + value[i].id + "</td><td>" + value[i].name + "</td><td>" + value[i].publicDate + "</td><td>" + value[i].author_id +"</td></tr>" 
+    }
+    returnValue += "</table></body></html>"
+
+    return returnValue
+}
+function reportBeautify (value){
+    let returnValue = "<html><head><title>Query Result</title></head> <body><table cellspacing='10'>";
     returnValue += "<tr><th>ID</th> <th>Name</th> <th>Publication Date</th> <th>Author ID</th><th>Author Name</th></tr>"
 
     // var i = 0
@@ -216,5 +228,5 @@ function outputBeautify (value) {
 
 
 
-module.exports = { fetchData, addUser, loginUser, generateReport, editData, outputBeautify }
+module.exports = { fetchData, addUser, loginUser, generateReport, editData, outputBeautify,reportBeautify }
 // try fuzzy search
